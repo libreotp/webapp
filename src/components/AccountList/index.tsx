@@ -93,7 +93,7 @@ const AccountList = ({ filter }: Props): JSX.Element => {
             You don't have any accounts yet
           </Typography>
           <Link to="/scan">
-            <Button color="primary">Add an account</Button>
+            <Button color="primary">Scan a QR code</Button>
           </Link>
         </div>
       )}
