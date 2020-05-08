@@ -4,6 +4,7 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import { Trans } from '@lingui/macro';
 
 import AccountListItem from './Item';
 import { openDatabase } from '../../utils/idb';
@@ -83,16 +84,18 @@ const AccountList = ({ filter }: Props): JSX.Element => {
       )}
       {!!accounts.length && !filteredAccounts.length && (
         <Typography variant="body1" className={classes.notFound}>
-          No account found
+          <Trans>No account found</Trans>
         </Typography>
       )}
       {!accounts.length && (
         <div className={classes.notFound}>
           <Typography variant="body1">
-            You don't have any accounts yet
+            <Trans>You don't have any accounts yet</Trans>
           </Typography>
           <Link to="/scan">
-            <Button color="primary">Scan a QR code</Button>
+            <Button color="primary">
+              <Trans>Scan a QR code</Trans>
+            </Button>
           </Link>
         </div>
       )}

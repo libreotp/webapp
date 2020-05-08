@@ -1,0 +1,1 @@
+/*eslint-disable*/module.exports={messages:{"No account found":"Aucun compte trouv\xE9","Scan a QR code":"Scan un QR code","Search":"Recherche","You don't have any accounts yet":"Vous n'avez pas encore de compte","You need to allow access to the camera to scan QR codes":"Vous devez autoriser l'acc\xE8s \xE0 la cam\xE9ra pour scanner des QR codes"}};

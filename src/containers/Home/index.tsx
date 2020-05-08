@@ -13,6 +13,8 @@ import Container from '@material-ui/core/Container';
 import Fab from '@material-ui/core/Fab';
 import CropFreeIcon from '@material-ui/icons/CropFree';
 import { Link } from 'react-router-dom';
+import { useLingui } from '@lingui/react';
+import { t } from '@lingui/macro';
 
 import AccountList from '../../components/AccountList';
 
@@ -62,6 +64,8 @@ const useStyles = makeStyles((theme: Theme) =>
 const Home: React.FC = () => {
   const classes = useStyles();
 
+  const { i18n } = useLingui();
+
   const [filter, setFilter] = useState<string>('');
 
   return (
@@ -73,7 +77,7 @@ const Home: React.FC = () => {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search…"
+              placeholder={`${i18n._(t`Search`)}…`}
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,

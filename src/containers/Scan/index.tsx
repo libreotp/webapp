@@ -6,6 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { Link } from 'react-router-dom';
 import QrScanner from 'qr-scanner';
+import { Trans } from '@lingui/macro';
 
 import history from '../../utils/history';
 import useUserMedia from '../../hooks/useUserMedia';
@@ -102,7 +103,10 @@ const Scan: React.FC = () => {
         </Toolbar>
       </AppBar>
       {!media.stream || media.error ? (
-        <p>You need to allow access to the camera to scan qrcodes.</p>
+        <p>
+          <Trans>You need to allow access to the camera to scan QR codes</Trans>
+          .
+        </p>
       ) : (
         <video
           className={classes.video}
