@@ -5,11 +5,10 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import TimelapseIcon from '@material-ui/icons/Timelapse';
 
-import { Account } from '../../../types';
 import TokenGet from '../../TokenGet';
 
 type Props = {
-  account: Account;
+  account: UserAccount;
 };
 
 const AccountListItem = ({ account }: Props): JSX.Element => {

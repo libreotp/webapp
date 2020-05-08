@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { authenticator } from 'otplib';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import { Account } from '../../types';
-
 type Props = {
-  account: Account;
+  account: UserAccount;
   setTrigger: (value: boolean) => void;
 };
 

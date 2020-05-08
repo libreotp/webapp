@@ -1,7 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
 
-import { UserMedia } from '../types';
-
 const useUserMedia = (constraints: MediaStreamConstraints): UserMedia => {
   const [stream, setStream] = useState<MediaStream | null>(null);
   const [error, setError] = useState<MediaStreamError | null>(null);

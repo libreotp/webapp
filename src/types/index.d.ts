@@ -1,4 +1,4 @@
-export interface Account {
+type UserAccount = {
   id: number;
   text: string;
   type: 'totp' | 'hotp';
@@ -13,14 +13,9 @@ export interface Account {
     digits?: number;
     period?: number;
   };
-}
+};
 
-export interface UserMedia {
-  stream: MediaStream | null;
-  error: MediaStreamError | null;
-}
-
-export interface Key {
+type Key = {
   type: 'totp' | 'hotp';
   label: {
     account: string;
@@ -33,4 +28,9 @@ export interface Key {
     digits?: number;
     period?: number;
   };
-}
+};
+
+type UserMedia = {
+  stream: MediaStream | null;
+  error: MediaStreamError | null;
+};

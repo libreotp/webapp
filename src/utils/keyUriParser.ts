@@ -1,5 +1,3 @@
-import { Key } from '../types';
-
 function keyUriParser(uri: string): Key | null {
   try {
     if (!uri.match(/^otpauth/i)) {

@@ -7,7 +7,6 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { Link } from 'react-router-dom';
 import QrScanner from 'qr-scanner';
 
-import { Account } from '../../types';
 import history from '../../utils/history';
 import useUserMedia from '../../hooks/useUserMedia';
 import keyUriParser from '../../utils/keyUriParser';
@@ -47,7 +46,7 @@ const Scan: React.FC = () => {
       const iv = generateIV();
 
       // @ts-ignore property id will be auto set
-      const account: Account = {
+      const account: UserAccount = {
         text,
         ...result,
       };

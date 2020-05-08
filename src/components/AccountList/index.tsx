@@ -5,7 +5,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 
-import { Account } from '../../types';
 import AccountListItem from './Item';
 import { openDatabase } from '../../utils/idb';
 import { decrypt } from '../../utils/crypto';
@@ -31,7 +30,7 @@ type Props = {
 const AccountList = ({ filter }: Props): JSX.Element => {
   const classes = useStyles();
 
-  const [accounts, setAccounts] = useState<Account[]>([]);
+  const [accounts, setAccounts] = useState<UserAccount[]>([]);
 
   useEffect(() => {
     async function getAccounts() {
@@ -77,7 +76,7 @@ const AccountList = ({ filter }: Props): JSX.Element => {
     <div className={classes.root}>
       {!!filteredAccounts.length && (
         <List className={classes.list}>
-          {filteredAccounts.map((account: Account) => (
+          {filteredAccounts.map((account: UserAccount) => (
             <AccountListItem key={account.id} account={account} />
           ))}
         </List>
