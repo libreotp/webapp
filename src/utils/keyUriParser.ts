@@ -1,3 +1,5 @@
+import bugsnagClient from './bugsnagClient';
+
 function keyUriParser(uri: string): Key | null {
   try {
     if (!uri.match(/^otpauth/i)) {
@@ -63,7 +65,7 @@ function keyUriParser(uri: string): Key | null {
       query,
     };
   } catch (error) {
-    console.error('error', error);
+    bugsnagClient.notify(error);
     return null;
   }
 }
