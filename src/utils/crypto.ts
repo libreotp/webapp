@@ -20,52 +20,51 @@ export function generateIV(): Uint8Array {
   return window.crypto.getRandomValues(new Uint8Array(12));
 }
 
-function jsonToArrayBuffer(object: any): ArrayBuffer {
-  const string = JSON.stringify(object);
-  const buffer = new ArrayBuffer(string.length);
-  const bufferView = new Uint8Array(buffer);
-  for (let i = 0; i < string.length; i++) {
-    bufferView[i] = string.charCodeAt(i);
-  }
-  return buffer;
+function toBase64(buffer: ArrayBuffer) {
+  return btoa(
+    new Uint8Array(buffer).reduce(
+      (previous, current) => previous + String.fromCharCode(current),
+      ''
+    )
+  );
 }
 
-export function encrypt(
+export async function encrypt(
   iv: Uint8Array,
   key: CryptoKey,
   data: any
-): PromiseLike<ArrayBuffer> {
-  return window.crypto.subtle.encrypt(
+): Promise<string> {
+  const buffer = new TextEncoder().encode(JSON.stringify(data));
+  const encrypted = await window.crypto.subtle.encrypt(
     {
       name: 'AES-GCM',
       iv,
     },
     key,
-    jsonToArrayBuffer(data)
+    buffer
   );
+
+  return toBase64(encrypted);
 }
 
-function arrayBufferToJSON(buffer: ArrayBuffer): any {
-  const str = String.fromCharCode.apply(
-    null,
-    Array.from(new Uint8Array(buffer))
-  );
-  return JSON.parse(str);
+function fromBase64(string: string) {
+  return Uint8Array.from(atob(string), (char) => char.charCodeAt(0));
 }
 
 export async function decrypt(
   iv: Uint8Array,
   key: CryptoKey,
-  data: any
-): Promise<any> {
+  data: string
+): Promise<UserAccount> {
+  const buffer = fromBase64(data);
   const decrypted = await window.crypto.subtle.decrypt(
     {
       name: 'AES-GCM',
       iv,
     },
     key,
-    data
+    buffer
   );
 
-  return arrayBufferToJSON(decrypted);
+  return JSON.parse(new TextDecoder().decode(decrypted));
 }
