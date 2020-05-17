@@ -1,7 +1,7 @@
 {
   "No account found": "No account found",
-  "Scan a QR code": "Scan a QR code",
-  "Search": "Search",
+  "Scan QR code": "Scan QR code",
+  "Search accounts": "Search accounts",
   "You don't have any accounts yet": "You don't have any accounts yet",
   "You need to allow access to the camera to scan QR codes": "You need to allow access to the camera to scan QR codes"
 }

@@ -94,7 +94,7 @@ const AccountList = ({ filter }: Props): JSX.Element => {
           </Typography>
           <Link to="/scan">
             <Button color="primary">
-              <Trans>Scan a QR code</Trans>
+              <Trans>Scan QR code</Trans>
             </Button>
           </Link>
         </div>
