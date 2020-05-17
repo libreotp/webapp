@@ -13,7 +13,10 @@ function keyUriParser(uri: string): Key | null {
 
     const type = url.host.toLowerCase();
 
-    if (type !== 'hotp' && type !== 'totp') {
+    if (
+      (type !== 'hotp' && type !== 'totp') ||
+      (type === 'hotp' && !url.searchParams.has('counter'))
+    ) {
       return null;
     }
 
@@ -38,21 +41,25 @@ function keyUriParser(uri: string): Key | null {
       issuer?: string;
       algorithm?: string;
       digits?: number;
+      counter?: number;
       period?: number;
     } = {
       secret: String(url.searchParams.get('secret')),
     };
 
+    if (url.searchParams.has('issuer')) {
+      query.issuer = String(url.searchParams.get('issuer'));
+    }
     if (url.searchParams.has('algorithm')) {
       query.algorithm = String(url.searchParams.get('algorithm'));
     }
     if (url.searchParams.has('digits')) {
       query.digits = Number(url.searchParams.get('digits'));
     }
-    if (url.searchParams.has('issuer')) {
-      query.issuer = String(url.searchParams.get('issuer'));
+    if (type === 'hotp' && url.searchParams.has('counter')) {
+      query.counter = Number(url.searchParams.get('counter'));
     }
-    if (url.searchParams.has('period')) {
+    if (type === 'totp' && url.searchParams.has('period')) {
       query.period = Number(url.searchParams.get('period'));
     }
 
