@@ -10,7 +10,9 @@ import { setupI18n } from '@lingui/core';
 import catalogEn from './locales/en.json';
 import catalogFr from './locales/fr.json';
 
-const ErrorBoundary = bugsnagClient.getPlugin('react');
+const ErrorBoundary = bugsnagClient
+  .getPlugin('react')!
+  .createErrorBoundary(React);
 const i18n = setupI18n();
 i18n.load('en', catalogEn);
 i18n.load('fr', catalogFr);

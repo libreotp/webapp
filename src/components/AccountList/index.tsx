@@ -51,10 +51,7 @@ const AccountList = ({ filter }: Props): JSX.Element => {
               key,
               encryptedAccount.data
             );
-            return {
-              id: encryptedAccount.id,
-              ...data,
-            };
+            return data;
           })
         );
 

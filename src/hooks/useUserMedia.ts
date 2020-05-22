@@ -33,9 +33,7 @@ const useUserMedia = (constraints: MediaStreamConstraints): UserMedia => {
         return;
       }
 
-      if ((stream as MediaStream).getTracks) {
-        (stream as MediaStream).getTracks().map((track) => track.stop());
-      }
+      (stream as MediaStream).getTracks().map((track) => track.stop());
     };
   }, [constraints, stream, error]);
 
