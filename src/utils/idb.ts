@@ -7,7 +7,7 @@ interface LibreOTPDB extends DBSchema {
     key: number;
     value: {
       id: number;
-      iv: Uint8Array;
+      iv: string;
       data: string;
     };
   };

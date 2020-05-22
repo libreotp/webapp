@@ -13,7 +13,7 @@ import useUserMedia from '../../hooks/useUserMedia';
 import keyUriParser from '../../utils/keyUriParser';
 import { openDatabase } from '../../utils/idb';
 
-import { generateIV, encrypt } from '../../utils/crypto';
+import { encrypt } from '../../utils/crypto';
 
 QrScanner.WORKER_PATH = '/lib/qr-scanner-worker.min.js';
 
@@ -44,7 +44,6 @@ const Scan: React.FC = () => {
     if (result) {
       const database = await openDatabase();
       const key = await database.get('keys', 1);
-      const iv = generateIV();
 
       // @ts-ignore property id will be auto set
       const account: UserAccount = {
@@ -53,7 +52,7 @@ const Scan: React.FC = () => {
       };
 
       if (key) {
-        const data = await encrypt(iv, key, account);
+        const { iv, data } = await encrypt(key, account);
 
         const transaction = database.transaction('accounts', 'readwrite');
         const store = transaction.objectStore('accounts');
