@@ -29,19 +29,19 @@ export async function encrypt(
   key: CryptoKey,
   data: any
 ): Promise<{ iv: string; data: string }> {
-  const dataEncoded = new TextEncoder().encode(JSON.stringify(data));
-  const iv = window.crypto.getRandomValues(new Uint8Array(12));
+  const bufferIv = window.crypto.getRandomValues(new Uint8Array(12));
+  const bufferData = new TextEncoder().encode(JSON.stringify(data));
   const encrypted = await window.crypto.subtle.encrypt(
     {
       name: 'AES-GCM',
       iv,
     },
     key,
-    dataEncoded
+    bufferData
   );
 
   return {
-    iv: toBase64(iv),
+    iv: toBase64(bufferIv),
     data: toBase64(encrypted),
   };
 }
@@ -55,15 +55,15 @@ export async function decrypt(
   key: CryptoKey,
   data: string
 ): Promise<UserAccount> {
-  const ivDecoded = fromBase64(iv);
-  const dataDecoded = fromBase64(data);
+  const bufferIv = fromBase64(iv);
+  const bufferData = fromBase64(data);
   const decrypted = await window.crypto.subtle.decrypt(
     {
       name: 'AES-GCM',
-      iv: ivDecoded,
+      iv: bufferIv,
     },
     key,
-    dataDecoded
+    bufferData
   );
 
   return JSON.parse(new TextDecoder().decode(decrypted));
