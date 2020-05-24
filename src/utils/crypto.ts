@@ -34,7 +34,7 @@ export async function encrypt(
   const encrypted = await window.crypto.subtle.encrypt(
     {
       name: 'AES-GCM',
-      iv,
+      iv: bufferIv,
     },
     key,
     bufferData
