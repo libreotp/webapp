@@ -25,6 +25,11 @@
       name="description"
       content="LibreOTP is an open source two-factor authentication web application for systems utilizing one-time password protocols."
     />
+
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' https://storage.googleapis.com; style-src 'self' 'unsafe-inline'; connect-src 'self' *.bugsnag.com;"
+    />
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
