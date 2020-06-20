@@ -9,3 +9,18 @@ LibreOTP supports:
 * QR code scanning
 * Search bar
 * Encryption
+
+## How to install
+
+### iPhone
+
+Open https://www.libreotp.app with Safari
+
+![Add](docs/images/installation-iphone.jpg)
+
+
+### Android
+
+Open https://www.libreotp.app with Chrome
+
+![Add](docs/images/installation-android.jpg)
