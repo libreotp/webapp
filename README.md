@@ -12,15 +12,17 @@ LibreOTP supports:
 
 ## How to install
 
+![Add](docs/images/qrcode.jpg)
+
 ### iPhone
 
-Open https://www.libreotp.app with Safari
+Open https://www.libreotp.app (or scan the QR code above) with Safari
 
 ![Add](docs/images/installation-iphone.jpg)
 
 
 ### Android
 
-Open https://www.libreotp.app with Chrome
+Open https://www.libreotp.app (or scan the QR code above) with Chrome
 
 ![Add](docs/images/installation-android.jpg)
