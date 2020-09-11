@@ -8,13 +8,13 @@ updates:
       - dependency-name: "history"
         versions: ["5.x"]
       - dependency-name: "@types/node"
-        versions: ["14.x"]
+        versions: ["13.x", "14.x"]
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
       interval: "daily"
     ignore:
       - dependency-name: "node"
-        versions: ["14.x"]
+        versions: ["13.x", "14.x"]
       - dependency-name: "nginx"
         versions: ["1.19.x"]
