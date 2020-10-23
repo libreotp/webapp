@@ -1,4 +1,4 @@
-FROM node:12.18.4-alpine3.12@sha256:59fa78a2149e3470ba7346fb17938e2c48e17096006083003ee1673cc172d676 as build
+FROM node:15.0.0-alpine3.12@sha256:690f029bff09b3ed2660f0defd351b56c848af6992633df0eef95b37118edd99 as build
 WORKDIR /app
 COPY package.json /app/package.json
 COPY package-lock.json /app/package-lock.json
