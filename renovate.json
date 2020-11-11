@@ -6,6 +6,15 @@
     {
       "updateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true
+    },
+    {
+      "datasources": [
+        "docker"
+      ],
+      "updateTypes": [
+        "minor"
+      ],
+      "enabled": false
     }
   ]
 }
