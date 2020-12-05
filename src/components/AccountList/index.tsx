@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
@@ -7,8 +7,6 @@ import { Link } from 'react-router-dom';
 import { Trans } from '@lingui/macro';
 
 import AccountListItem from './Item';
-import { openDatabase } from '../../utils/idb';
-import { decrypt } from '../../utils/crypto';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,43 +23,21 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 type Props = {
+  accounts: UserAccount[];
+  showSelectBar: boolean;
   filter: string;
+  selectedAccounts: number[];
+  setSelectedAccounts: (value: React.SetStateAction<number[]>) => void;
 };
 
-const AccountList = ({ filter }: Props): JSX.Element => {
+const AccountList = ({
+  accounts,
+  filter,
+  showSelectBar,
+  selectedAccounts,
+  setSelectedAccounts,
+}: Props): JSX.Element => {
   const classes = useStyles();
-
-  const [accounts, setAccounts] = useState<UserAccount[]>([]);
-
-  useEffect(() => {
-    async function getAccounts() {
-      const database = await openDatabase();
-      const key = await database.get('keys', 1);
-
-      if (key) {
-        const transaction = database.transaction('accounts', 'readonly');
-        const store = transaction.objectStore('accounts');
-        const encryptedAccounts = await store.getAll();
-        await transaction.done;
-
-        const accounts = await Promise.all(
-          encryptedAccounts.map(async (encryptedAccount) => {
-            const data = await decrypt(
-              encryptedAccount.iv,
-              key,
-              encryptedAccount.data
-            );
-            data.id = encryptedAccount.id;
-            return data;
-          })
-        );
-
-        setAccounts(accounts);
-      }
-    }
-
-    getAccounts();
-  }, []);
 
   const filteredAccounts = accounts.filter((account) => {
     return (
@@ -76,7 +52,13 @@ const AccountList = ({ filter }: Props): JSX.Element => {
       {!!filteredAccounts.length && (
         <List className={classes.list}>
           {filteredAccounts.map((account: UserAccount) => (
-            <AccountListItem key={account.id} account={account} />
+            <AccountListItem
+              key={account.id}
+              account={account}
+              showSelectBar={showSelectBar}
+              selectedAccounts={selectedAccounts}
+              setSelectedAccounts={setSelectedAccounts}
+            />
           ))}
         </List>
       )}

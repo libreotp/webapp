@@ -4,7 +4,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 type Props = {
   account: UserAccount;
-  setTrigger: (value: boolean) => void;
+  setTrigger: (value: React.SetStateAction<boolean>) => void;
 };
 
 const TokenGet = ({ account, setTrigger }: Props): JSX.Element => {
