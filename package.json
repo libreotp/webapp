@@ -4,7 +4,7 @@
   "author": "David Routhieau",
   "private": true,
   "dependencies": {
-    "@babel/core": "7.12.9",
+    "@babel/core": "7.12.10",
     "@bugsnag/js": "7.5.3",
     "@bugsnag/plugin-react": "7.5.3",
     "@lingui/cli": "3.2.3",
