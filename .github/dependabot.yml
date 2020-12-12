@@ -4,13 +4,15 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    versioning-strategy: increase-if-necessary
+    ignore:
+      - dependency-name: "history"
+        versions: [">4"]
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
       interval: "daily"
     ignore:
       - dependency-name: "node"
-        versions: [">12"]
+        versions: [">14"]
       - dependency-name: "nginx"
         versions: [">1.18"]
