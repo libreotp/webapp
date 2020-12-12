@@ -6,7 +6,7 @@
   "dependencies": {
     "@babel/core": "7.12.10",
     "@bugsnag/js": "7.5.3",
-    "@bugsnag/plugin-react": "7.5.3",
+    "@bugsnag/plugin-react": "7.5.4",
     "@lingui/cli": "3.3.0",
     "@lingui/macro": "3.2.3",
     "@lingui/react": "3.2.3",
