@@ -5,10 +5,10 @@ updates:
     schedule:
       interval: "daily"
     ignore:
+      - dependency-name: "@types/node"
+        versions: [">14"]
       - dependency-name: "history"
         versions: [">4"]
-      - dependency-name: "web-vitals"
-        versions: [">0"]
       - dependency-name: "workbox-*"
         versions: [">5"]
   - package-ecosystem: "docker"
