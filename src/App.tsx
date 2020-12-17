@@ -9,6 +9,14 @@ const theme = createMuiTheme({
   palette: {
     type: 'dark',
   },
+  overrides: {
+    MuiSnackbarContent: {
+      root: {
+        color: 'white',
+        backgroundColor: 'black',
+      },
+    },
+  },
 });
 
 const App: React.FC = () => {

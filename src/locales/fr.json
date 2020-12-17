@@ -1,7 +1,12 @@
 {
+  "Delete": "Supprimer",
   "No account found": "Aucun compte trouvé",
   "Scan QR code": "Scan QR code",
+  "Scanning QR code...": "Scan QR code...",
   "Search accounts": "Recherche de comptes",
+  "Select": "Selectionner",
+  "Select accounts": "Selectionner des comptes",
   "You don't have any accounts yet": "Vous n'avez pas encore de compte",
-  "You need to allow access to the camera to scan QR codes": "Vous devez autoriser l'accès à la caméra pour scanner des QR codes"
+  "You need to allow access to the camera to scan QR codes": "Vous devez autoriser l'accès à la caméra pour scanner des QR codes",
+  "selected": "selectionné(s)"
 }

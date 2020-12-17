@@ -4,15 +4,16 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import Snackbar from '@material-ui/core/Snackbar';
 import { Link } from 'react-router-dom';
 import QrScanner from 'qr-scanner';
-import { Trans } from '@lingui/macro';
+import { Trans, t } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 
 import history from '../../utils/history';
 import useUserMedia from '../../hooks/useUserMedia';
 import keyUriParser from '../../utils/keyUriParser';
 import { openDatabase } from '../../utils/idb';
-
 import { encrypt } from '../../utils/crypto';
 
 QrScanner.WORKER_PATH = '/lib/qr-scanner-worker.min.js';
@@ -23,13 +24,31 @@ const useStyles = makeStyles(() =>
       color: '#fff',
     },
     video: {
-      width: '100%',
+      width: '100vw',
+      height: '100vh',
+      objectFit: 'cover',
+    },
+    square: {
+      position: 'absolute',
+      border: '2px solid #3f51b5',
+      top: 'calc(10% + 62px)',
+      right: '10%',
+      bottom: '10%',
+      left: '10%',
+      animation: '$beam 1s infinite',
+    },
+    '@keyframes beam': {
+      '50%': {
+        opacity: 0.5,
+      },
     },
   })
 );
 
 const Scan: React.FC = () => {
   const classes = useStyles();
+
+  const { i18n } = useLingui();
 
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -92,7 +111,7 @@ const Scan: React.FC = () => {
 
   return (
     <>
-      <AppBar position="sticky">
+      <AppBar position="fixed">
         <Toolbar>
           <Link className={classes.link} to="/">
             <IconButton color="inherit" aria-label="back">
@@ -101,19 +120,23 @@ const Scan: React.FC = () => {
           </Link>
         </Toolbar>
       </AppBar>
+      <Snackbar open={true} message={`${i18n._(t`Scanning QR code...`)}`} />
       {!media.stream || media.error ? (
         <p>
           <Trans>You need to allow access to the camera to scan QR codes</Trans>
           .
         </p>
       ) : (
-        <video
-          className={classes.video}
-          autoPlay
-          muted
-          playsInline
-          ref={videoRef}
-        />
+        <>
+          <video
+            className={classes.video}
+            autoPlay
+            muted
+            playsInline
+            ref={videoRef}
+          />
+          <div className={classes.square}></div>
+        </>
       )}
     </>
   );

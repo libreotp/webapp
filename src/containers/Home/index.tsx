@@ -15,7 +15,7 @@ import Fab from '@material-ui/core/Fab';
 import CropFreeIcon from '@material-ui/icons/CropFree';
 import { Link } from 'react-router-dom';
 import { useLingui } from '@lingui/react';
-import { t } from '@lingui/macro';
+import { Trans, t } from '@lingui/macro';
 import IconButton from '@material-ui/core/IconButton';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Menu from '@material-ui/core/Menu';
@@ -180,8 +180,8 @@ const Home: React.FC = () => {
               </IconButton>
               <Typography variant="h6" className={classes.title}>
                 {selectedAccounts.length
-                  ? `${selectedAccounts.length} selected`
-                  : 'Select accounts'}
+                  ? `${selectedAccounts.length} ${i18n._(t`selected`)}`
+                  : `${i18n._(t`Select accounts`)}`}
               </Typography>
             </>
           ) : null}
@@ -229,11 +229,11 @@ const Home: React.FC = () => {
               >
                 {!showSelectBar ? (
                   <MenuItem key="select" onClick={handleSelect}>
-                    Select
+                    <Trans>Select</Trans>
                   </MenuItem>
                 ) : (
                   <MenuItem key="select" onClick={handleDelete}>
-                    Delete
+                    <Trans>Delete</Trans>
                   </MenuItem>
                 )}
               </Menu>
