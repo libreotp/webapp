@@ -14,8 +14,7 @@ import Container from '@material-ui/core/Container';
 import Fab from '@material-ui/core/Fab';
 import CropFreeIcon from '@material-ui/icons/CropFree';
 import { Link } from 'react-router-dom';
-import { useLingui } from '@lingui/react';
-import { Trans, t } from '@lingui/macro';
+import { Trans, Plural, t } from '@lingui/macro';
 import IconButton from '@material-ui/core/IconButton';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Menu from '@material-ui/core/Menu';
@@ -77,8 +76,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Home: React.FC = () => {
   const classes = useStyles();
-
-  const { i18n } = useLingui();
 
   const [accounts, setAccounts] = useState<UserAccount[]>([]);
   const [showSelectBar, setShowSelectBar] = useState<boolean>(false);
@@ -179,9 +176,15 @@ const Home: React.FC = () => {
                 <CloseIcon onClick={handleSelectCancel} />
               </IconButton>
               <Typography variant="h6" className={classes.title}>
-                {selectedAccounts.length
-                  ? `${selectedAccounts.length} ${i18n._(t`selected`)}`
-                  : `${i18n._(t`Select accounts`)}`}
+                {selectedAccounts.length ? (
+                  <Plural
+                    value={selectedAccounts.length}
+                    one="# selected"
+                    other="# selected"
+                  />
+                ) : (
+                  t`Select accounts`
+                )}
               </Typography>
             </>
           ) : null}
@@ -191,7 +194,7 @@ const Home: React.FC = () => {
                 <SearchIcon />
               </div>
               <InputBase
-                placeholder={`${i18n._(t`Search accounts`)}`}
+                placeholder={`${t`Search accounts`}`}
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,
@@ -232,7 +235,7 @@ const Home: React.FC = () => {
                     <Trans>Select</Trans>
                   </MenuItem>
                 ) : (
-                  <MenuItem key="select" onClick={handleDelete}>
+                  <MenuItem key="delete" onClick={handleDelete}>
                     <Trans>Delete</Trans>
                   </MenuItem>
                 )}

@@ -74,7 +74,7 @@ const AccountList = ({
           </Typography>
           <Link to="/scan">
             <Button color="primary">
-              <Trans>Scan QR code</Trans>
+              <Trans>Scan a QR code</Trans>
             </Button>
           </Link>
         </div>

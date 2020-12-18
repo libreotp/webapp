@@ -8,7 +8,6 @@ import Snackbar from '@material-ui/core/Snackbar';
 import { Link } from 'react-router-dom';
 import QrScanner from 'qr-scanner';
 import { Trans, t } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
 
 import history from '../../utils/history';
 import useUserMedia from '../../hooks/useUserMedia';
@@ -47,8 +46,6 @@ const useStyles = makeStyles(() =>
 
 const Scan: React.FC = () => {
   const classes = useStyles();
-
-  const { i18n } = useLingui();
 
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -120,7 +117,7 @@ const Scan: React.FC = () => {
           </Link>
         </Toolbar>
       </AppBar>
-      <Snackbar open={true} message={`${i18n._(t`Scanning QR code...`)}`} />
+      <Snackbar open={true} message={`${t`Scanning QR code...`}`} />
       {!media.stream || media.error ? (
         <p>
           <Trans>You need to allow access to the camera to scan QR codes</Trans>
