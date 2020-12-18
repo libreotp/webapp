@@ -8,7 +8,7 @@
     "@bugsnag/js": "7.5.3",
     "@bugsnag/plugin-react": "7.5.4",
     "@lingui/cli": "3.3.0",
-    "@lingui/macro": "3.2.3",
+    "@lingui/macro": "3.3.0",
     "@lingui/react": "3.3.0",
     "@material-ui/core": "4.11.2",
     "@material-ui/icons": "4.9.1",
