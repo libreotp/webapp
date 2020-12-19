@@ -117,7 +117,7 @@ const Scan: React.FC = () => {
           </Link>
         </Toolbar>
       </AppBar>
-      <Snackbar open={true} message={`${t`Scanning QR code...`}`} />
+      <Snackbar open={true} message={t`Scanning QR code...`} />
       {!media.stream || media.error ? (
         <p>
           <Trans>You need to allow access to the camera to scan QR codes</Trans>

@@ -194,7 +194,7 @@ const Home: React.FC = () => {
                 <SearchIcon />
               </div>
               <InputBase
-                placeholder={`${t`Search accounts`}`}
+                placeholder={t`Search accounts`}
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,
