@@ -4,6 +4,11 @@ import Scan from './containers/Scan';
 import Home from './containers/Home';
 import { Router, Switch, Route } from 'react-router-dom';
 import history from './utils/history';
+import { I18nProvider } from '@lingui/react';
+import { i18n } from '@lingui/core';
+import { en, fr } from 'make-plural/plurals';
+import catalogEn from './locales/en.json';
+import catalogFr from './locales/fr.json';
 
 const theme = createMuiTheme({
   palette: {
@@ -19,9 +24,15 @@ const theme = createMuiTheme({
   },
 });
 
+i18n.loadLocaleData('en', { plurals: en });
+i18n.loadLocaleData('fr', { plurals: fr });
+i18n.load('en', catalogEn);
+i18n.load('fr', catalogFr);
+i18n.activate(window.navigator.language.substring(0, 2) || 'en');
+
 const App: React.FC = () => {
   return (
-    <div>
+    <I18nProvider i18n={i18n}>
       <ThemeProvider theme={theme}>
         <Router history={history}>
           <Switch>
@@ -34,7 +45,7 @@ const App: React.FC = () => {
           </Switch>
         </Router>
       </ThemeProvider>
-    </div>
+    </I18nProvider>
   );
 };
 
