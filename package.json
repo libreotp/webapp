@@ -2,7 +2,7 @@
   "name": "@libreotp/webapp",
   "version": "1.0.0",
   "author": "David Routhieau",
-  "private": true,
+  "homepage": "https://libreotp.app",
   "dependencies": {
     "@babel/core": "7.12.10",
     "@bugsnag/js": "7.5.4",
