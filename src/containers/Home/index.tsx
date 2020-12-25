@@ -183,7 +183,7 @@ const Home: React.FC = () => {
                     other="# selected"
                   />
                 ) : (
-                  t`Select accounts`
+                  <Trans>Select accounts</Trans>
                 )}
               </Typography>
             </>
