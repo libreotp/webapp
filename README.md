@@ -10,19 +10,14 @@ LibreOTP supports:
 * Search bar
 * Encryption
 
-## How to install
+## Get started
 
-![Add](docs/images/qrcode.jpg)
+![LibreOTP Homepage QR code](docs/images/homepage-qrcode.jpg)
 
 ### iPhone
 
-Open https://www.libreotp.app (or scan the QR code above) with Safari
-
-![Add](docs/images/installation-iphone.jpg)
-
+From https://libreotp.app, tap <img src="docs/images/ios-safari-share-button.png" alt="the share button" width="14" height="17" />, then tap Add to Home Screen.
 
 ### Android
 
-Open https://www.libreotp.app (or scan the QR code above) with Chrome
-
-![Add](docs/images/installation-android.jpg)
+From https://libreotp.app, tap Add LibreOTP to Home screen.
