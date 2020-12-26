@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "David Routhieau",
   "license": "Apache-2.0",
-  "homepage": "https://libreotp.app",
+  "private": true,
   "dependencies": {
     "@bugsnag/js": "7.5.4",
     "@bugsnag/plugin-react": "7.5.4",
