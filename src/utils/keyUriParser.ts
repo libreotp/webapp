@@ -2,7 +2,7 @@ import bugsnagClient from './bugsnagClient';
 
 function keyUriParser(uri: string): Key | null {
   try {
-    if (!uri.match(/^otpauth/i)) {
+    if (!uri.match(/^otpauth:/i)) {
       return null;
     }
 
@@ -15,7 +15,9 @@ function keyUriParser(uri: string): Key | null {
 
     if (
       (type !== 'hotp' && type !== 'totp') ||
-      (type === 'hotp' && !url.searchParams.has('counter'))
+      !url.searchParams.get('secret') ||
+      (type === 'hotp' &&
+        (!url.searchParams.get('counter') || !url.searchParams.get('period')))
     ) {
       return null;
     }
@@ -45,6 +47,9 @@ function keyUriParser(uri: string): Key | null {
       period?: number;
     } = {
       secret: String(url.searchParams.get('secret')),
+      algorithm: 'SHA1',
+      digits: 6,
+      period: 30,
     };
 
     if (url.searchParams.has('issuer')) {
@@ -59,7 +64,7 @@ function keyUriParser(uri: string): Key | null {
     if (type === 'hotp' && url.searchParams.has('counter')) {
       query.counter = Number(url.searchParams.get('counter'));
     }
-    if (type === 'totp' && url.searchParams.has('period')) {
+    if (type === 'hotp' || url.searchParams.has('period')) {
       query.period = Number(url.searchParams.get('period'));
     }
 

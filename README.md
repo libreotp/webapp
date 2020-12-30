@@ -4,7 +4,7 @@ LibreOTP is an open source two-factor authentication web application for systems
 
 LibreOTP supports:
 
-* TOTP
+* HOTP / TOTP
 * Multiple accounts
 * QR code scanning
 * Search bar

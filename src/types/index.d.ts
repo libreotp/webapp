@@ -26,6 +26,7 @@ type Key = {
     issuer?: string;
     algorithm?: string;
     digits?: number;
+    counter?: number;
     period?: number;
   };
 };
