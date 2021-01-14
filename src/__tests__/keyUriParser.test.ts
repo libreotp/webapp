@@ -41,7 +41,7 @@ const uriList: keyUriParserTestTuple[] = [
   ],
   // Valid HOTP
   [
-    'otpauth://hotp/Test:test%40test.tld?secret=abcdefghijklmnopqrstuvwxyz&issuer=Test&algorithm=SHA256&digits=6&period=30&counter=0',
+    'otpauth://hotp/Test:test@test.tld?secret=abcdefghijklmnopqrstuvwxyz&issuer=Test&algorithm=SHA256&digits=6&period=30&counter=0',
     {
       type: 'hotp',
       label: {
