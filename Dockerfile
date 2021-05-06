@@ -6,7 +6,7 @@ RUN npm install
 COPY . /app
 RUN npm run build
 
-FROM nginx:1.18.0-alpine@sha256:34039e81cf9de5f7f92f6280701e92cd51b85fb6b7170c41f6bf8920fcc79f8e
+FROM nginx:1.20.0-alpine@sha256:55684c622b7b62045bd4578e402704bdd1923f6ab704f57134e712c2f1da48c8
 COPY --from=build /app/build /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 8080
