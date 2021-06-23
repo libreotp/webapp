@@ -6,6 +6,9 @@ build:
 	docker build -t $(DOCKER_IMAGE) .
 	docker build --target build -t $(DOCKER_IMAGE)/dev .
 
+run:
+	docker run -it --rm $(DOCKER_IMAGE)
+
 dev:
 	docker run -it --rm \
 		--volume $(PWD):/app/dev/ \
