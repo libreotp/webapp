@@ -2,7 +2,7 @@
 !/public/
 !/src/
 !.eslintrc
-!.linguirc
+!lingui.config.js
 !/nginx.conf
 !/package.json
 !/package-lock.json

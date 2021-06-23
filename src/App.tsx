@@ -7,8 +7,8 @@ import history from './utils/history';
 import { I18nProvider } from '@lingui/react';
 import { i18n } from '@lingui/core';
 import { en, fr } from 'make-plural/plurals';
-import catalogEn from './locales/en.json';
-import catalogFr from './locales/fr.json';
+import { messages as catalogEn } from './locale/en/messages';
+import { messages as catalogFr } from './locale/fr/messages';
 
 const theme = createMuiTheme({
   palette: {
