@@ -47,6 +47,8 @@
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged",
     "prettify": "prettier --write \"src/**/*.{ts,tsx}\"",
     "lint": "eslint --fix \"src/**/*.{ts,tsx}\"",
     "i18n:extract": "lingui extract",
