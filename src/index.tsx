@@ -5,11 +5,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import bugsnagClient from './utils/bugsnagClient';
+import bugsnag from './utils/bugsnag';
 
-const ErrorBoundary = bugsnagClient
-  .getPlugin('react')!
-  .createErrorBoundary(React);
+const ErrorBoundary = bugsnag.getPlugin('react')!.createErrorBoundary(React);
 
 ReactDOM.render(
   <StrictMode>

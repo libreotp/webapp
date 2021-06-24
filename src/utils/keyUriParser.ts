@@ -1,4 +1,4 @@
-import bugsnagClient from './bugsnagClient';
+import bugsnag from './bugsnag';
 
 function keyUriParser(uri: string): Key | null {
   try {
@@ -77,7 +77,7 @@ function keyUriParser(uri: string): Key | null {
       query,
     };
   } catch (error) {
-    bugsnagClient.notify(error);
+    bugsnag.notify(error);
     return null;
   }
 }
